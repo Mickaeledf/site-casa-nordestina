@@ -1,0 +1,17 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Configurações locais
+.claude/settings.local.json
+.env
+.env.*
+
+# Dependências (caso algum dia sejam usadas)
+node_modules/

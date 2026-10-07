@@ -1,0 +1,17 @@
+Coloque aqui as fotos reais da loja, com EXATAMENTE estes nomes.
+Enquanto a foto não existir, o site mostra um quadro amarelo com um emoji.
+Dica: use fotos quadradas ou 16:10, com até ~200 KB cada (pode converter em squoosh.app).
+
+LOGO E FACHADA
+  logo.png        -> logo "Casa Nordestina" (fundo transparente ou branco)
+  fachada.jpg     -> foto da fachada (fundo do topo do site e prévia no WhatsApp)
+
+CATEGORIAS
+  castanhas.jpg  temperos.jpg  doces.jpg  queijos.jpg
+  regionais.jpg  saudavel.jpg  mercearia.jpg
+
+INSTAGRAM (6 fotos)
+  insta-1.jpg ... insta-6.jpg
+
+OFERTAS DO DIA
+  Os nomes ficam no arquivo js/ofertas.js (campo "foto").
