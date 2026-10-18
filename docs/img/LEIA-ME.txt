@@ -1,17 +1,15 @@
-Coloque aqui as fotos reais da loja, com EXATAMENTE estes nomes.
-Enquanto a foto não existir, o site mostra um quadro amarelo com um emoji.
-Dica: use fotos quadradas ou 16:10, com até ~200 KB cada (pode converter em squoosh.app).
+Fotos do site. Para trocar uma foto, substitua o arquivo mantendo EXATAMENTE o mesmo nome.
+Enquanto uma foto não existir, o site mostra um bloco em tom de barro com a inicial do produto.
+Dica: fotos com até ~800 px de largura e ~200 KB (pode comprimir em squoosh.app).
 
-LOGO E FACHADA
-  logo.png        -> logo "Casa Nordestina" (fundo transparente ou branco)
-  fachada.jpg     -> foto da fachada (fundo do topo do site e prévia no WhatsApp)
-
-CATEGORIAS
+JÁ PREENCHIDAS (tiradas do Instagram da loja)
+  fachada.jpg                     -> topo do site e prévia no WhatsApp
   castanhas.jpg  temperos.jpg  doces.jpg  queijos.jpg
-  regionais.jpg  saudavel.jpg  mercearia.jpg
+  regionais.jpg  polpas.jpg  saudavel.jpg  mercearia.jpg
+  oferta-segunda.jpg  oferta-terca.jpg  oferta-quarta.jpg  oferta-sexta.jpg  -> artes dos cartazes do dia
+  insta-1.jpg ... insta-6.jpg     -> grade "Novidade todo dia no Instagram"
 
-INSTAGRAM (6 fotos)
-  insta-1.jpg ... insta-6.jpg
-
-OFERTAS DO DIA
-  Os nomes ficam no arquivo js/ofertas.js (campo "foto").
+FALTANDO
+  logo.png                        -> logo da loja (fundo transparente ou branco)
+  fotos dos produtos das ofertas  -> os nomes estão em js/ofertas.js (campo "foto")
+  oferta-sabado.jpg               -> arte do sábado (adicione "arte" no sábado em js/ofertas.js)

@@ -36,7 +36,11 @@
     img.alt = alt;
     img.loading = "lazy";
     img.decoding = "async";
-    img.onload = () => ph.replaceWith(img);
+    img.className = "ph__img";
+    // a imagem fica dentro do placeholder (para o lazy-loading funcionar) e o substitui ao carregar
+    img.onload = () => { img.className = ""; ph.replaceWith(img); };
+    img.onerror = () => img.remove();
+    ph.appendChild(img);
     return ph;
   }
 
@@ -127,7 +131,10 @@
       const o = OFERTAS[d];
       lista.innerHTML = "";
 
-      // Cartaz do dia
+      // Cartaz do dia (com a arte do Instagram, se houver)
+      const carimbo = o.desconto
+        ? '<div class="carimbo"><div><strong>' + o.desconto + "</strong><span>de desconto</span></div></div>"
+        : "";
       const cartaz = document.createElement("div");
       cartaz.className = "cartaz cartaz--" + (o.cor || "creme");
       cartaz.innerHTML =
@@ -137,9 +144,9 @@
           '<h3 class="cartaz__tema">' + DIAS[d] + " " + o.titulo + "</h3>" +
           (o.chamada ? '<p class="cartaz__chamada">' + o.chamada + "</p>" : "") +
         "</div>" +
-        (o.desconto
-          ? '<div class="carimbo"><div><strong>' + o.desconto + "</strong><span>de desconto</span></div></div>"
-          : "");
+        (o.arte
+          ? '<figure class="cartaz__arte"><img src="img/' + o.arte + '" alt="Arte da promoção de ' + DIAS[d].toLowerCase() + ' no Instagram" loading="lazy" onerror="this.remove()">' + carimbo + "</figure>"
+          : carimbo);
       lista.appendChild(cartaz);
 
       if (!o.produtos.length) {
@@ -207,7 +214,6 @@
       const info = document.createElement("div");
       info.className = "categoria__info";
       info.innerHTML =
-        '<span class="categoria__num">' + String(i + 1).padStart(2, "0") + "</span>" +
         "<h3>" + c.nome + "</h3><p>" + c.desc + "</p>" +
         '<a class="link-seta" target="_blank" rel="noopener" href="' +
         linkWa("Olá! Vi no site e queria saber sobre *" + c.nome + "*.") +
@@ -227,7 +233,7 @@
       a.rel = "noopener";
       a.setAttribute("aria-label", "Ver post no Instagram");
       const ph = foto("insta-" + i + ".jpg", "Post do Instagram da Casa Nordestina", i);
-      if (ph.classList.contains("ph")) ph.textContent = "✺";
+      ph.firstChild.textContent = "✺";
       a.appendChild(ph);
       el.appendChild(a);
     }

@@ -5,7 +5,8 @@
    - tema:     texto curto do selo redondo
    - desconto: ex. "15%" (deixe "" se não houver)
    - chamada:  frase de efeito do cartaz
-   - cor:      "creme", "mostarda" ou "laranja" (fundo do cartaz)
+   - cor:      "creme", "mostarda" ou "laranja" (tom do cartaz)
+   - arte:     imagem da promoção (pasta img/), ex. "oferta-segunda.jpg"
    - produtos: nome, preco ("31,99" ou "" para "Consulte"), unidade, foto
    Os produtos abaixo são EXEMPLOS: troque pelos reais.
    ============================================================ */
@@ -14,9 +15,10 @@ window.OFERTAS = {
     titulo: "das Castanhas e Frutas Secas",
     tema: "Castanhas & Frutas Secas",
     emoji: "🥜",
-    desconto: "15%",
-    chamada: "Toda segunda, castanhas e frutas secas com desconto!",
+    desconto: "10%",
+    chamada: "Toda segunda-feira, nossas castanhas e frutas secas estão com desconto!",
     cor: "laranja",
+    arte: "oferta-segunda.jpg",
     produtos: [
       { nome: "Castanha de caju", preco: "", unidade: "kg", foto: "castanha-caju.jpg" },
       { nome: "Castanha-do-pará", preco: "", unidade: "kg", foto: "castanha-para.jpg" },
@@ -31,6 +33,7 @@ window.OFERTAS = {
     desconto: "15%",
     chamada: "Sabor que transforma, qualidade que você confia! Desconto em todos os temperos.",
     cor: "creme",
+    arte: "oferta-terca.jpg",
     produtos: [
       { nome: "Colorau", preco: "", unidade: "100g", foto: "colorau.jpg" },
       { nome: "Cominho", preco: "", unidade: "100g", foto: "cominho.jpg" },
@@ -39,12 +42,13 @@ window.OFERTAS = {
     ]
   },
   3: {
-    titulo: "da Saudável",
-    tema: "Saudável",
+    titulo: "dos Produtos Naturais",
+    tema: "Produtos Naturais",
     emoji: "🌾",
-    desconto: "",
-    chamada: "Grãos, sementes e naturais a granel, do jeito que você precisa.",
-    cor: "creme",
+    desconto: "15%",
+    chamada: "Toda quarta-feira é dia de cuidar da saúde e economizar: produtos naturais a granel com desconto.",
+    cor: "mostarda",
+    arte: "oferta-quarta.jpg",
     produtos: [
       { nome: "Linhaça dourada", preco: "", unidade: "kg", foto: "linhaca.jpg" },
       { nome: "Granola", preco: "", unidade: "kg", foto: "granola.jpg" },
@@ -66,8 +70,9 @@ window.OFERTAS = {
     tema: "Polpas de Suco",
     emoji: "🍍",
     desconto: "15%",
-    chamada: "Toda sexta, o seu suco preferido entra em promoção!",
-    cor: "mostarda",
+    chamada: "Sextou! Todas as polpas de frutas estão com desconto.",
+    cor: "laranja",
+    arte: "oferta-sexta.jpg",
     produtos: [
       { nome: "Polpa de abacaxi", preco: "", unidade: "un", foto: "polpa-abacaxi.jpg" },
       { nome: "Polpa de cajá", preco: "", unidade: "un", foto: "polpa-caja.jpg" },
@@ -76,17 +81,17 @@ window.OFERTAS = {
     ]
   },
   6: {
-    titulo: "dos Doces a Granel",
-    tema: "Doces a Granel",
+    titulo: "dos Queijos e Doces",
+    tema: "Queijos & Doces",
     emoji: "🍬",
-    desconto: "",
-    chamada: "Cocada, rapadura, doce de leite e muito mais pra adoçar o fim de semana.",
+    desconto: "10%",
+    chamada: "Todo sábado, queijos e doces com desconto pra adoçar o fim de semana.",
     cor: "creme",
     produtos: [
+      { nome: "Queijo coalho", preco: "", unidade: "kg", foto: "queijo-coalho.jpg" },
+      { nome: "Queijo minas", preco: "", unidade: "kg", foto: "queijo-minas.jpg" },
       { nome: "Doce de leite", preco: "", unidade: "kg", foto: "doce-leite.jpg" },
-      { nome: "Cocada", preco: "", unidade: "un", foto: "cocada.jpg" },
-      { nome: "Rapadura", preco: "", unidade: "un", foto: "rapadura.jpg" },
-      { nome: "Queijo minas", preco: "", unidade: "kg", foto: "queijo-minas.jpg" }
+      { nome: "Rapadura", preco: "", unidade: "un", foto: "rapadura.jpg" }
     ]
   }
 };

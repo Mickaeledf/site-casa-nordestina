@@ -132,7 +132,7 @@ h1 em, h2 em, .rodape__marca em, .marca__txt em { font-style: italic; font-weigh
 }
 .arco::after { content: ""; position: absolute; inset: 12px; border: 1.5px dashed rgba(251, 246, 240, .45); border-radius: inherit; pointer-events: none; }
 .arco__foto { position: absolute; inset: 0; background: url("../img/fachada.jpg") center / cover no-repeat; mix-blend-mode: multiply; opacity: .85; }
-.arco__sol { position: absolute; width: 46%; aspect-ratio: 1; left: 27%; top: 16%; color: var(--sol); opacity: .9; animation: girar 60s linear infinite; }
+.arco__sol { position: absolute; width: 30%; aspect-ratio: 1; left: 35%; top: 4%; color: var(--sol); opacity: .9; animation: girar 60s linear infinite; }
 .arco__cacto { position: absolute; width: 30%; height: 52%; bottom: -2%; left: 8%; color: var(--barro-900); }
 .selo-giro { position: absolute; width: 150px; right: -18px; bottom: 34px; animation: girar 24s linear infinite; }
 .selo-giro__fundo { fill: var(--linho); stroke: var(--barro-800); stroke-width: 1.5; }
@@ -149,7 +149,7 @@ h1 em, h2 em, .rodape__marca em, .marca__txt em { font-style: italic; font-weigh
 /* ---------- Seções ---------- */
 .secao { padding: 96px 0; position: relative; }
 .secao--areia { background: var(--areia) var(--papel); }
-.secao__topo { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; margin-bottom: 44px; }
+.secao__topo { margin-bottom: 44px; }
 .secao__topo h2 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--barro-800); margin-bottom: .2em; }
 .secao__topo p { margin: 0; color: var(--tinta-suave); max-width: 52ch; font-size: 1.05rem; }
 .secao__num {
@@ -193,6 +193,10 @@ h1 em, h2 em, .rodape__marca em, .marca__txt em { font-style: italic; font-weigh
 .cartaz__dia small { font-family: var(--sans); font-style: normal; font-size: .7rem; font-weight: 800; letter-spacing: .1em; background: var(--sol); color: var(--barro-900); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
 .cartaz__tema { font-size: clamp(2.2rem, 6vw, 3.6rem); color: var(--linho); margin: 4px 0 10px; }
 .cartaz__chamada { margin: 0; max-width: 46ch; color: #f3e3d9; }
+.cartaz__arte { position: relative; margin: 0; width: 210px; }
+.cartaz__arte img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; transform: rotate(3deg); box-shadow: 0 20px 40px -16px rgba(0,0,0,.55); border: 4px solid var(--linho); }
+.cartaz__arte .carimbo { position: absolute; left: -56px; bottom: -18px; width: 124px; height: 124px; }
+.cartaz__arte .carimbo strong { font-size: 2.4rem; }
 /* Carimbo de desconto */
 .carimbo {
   position: relative; width: 150px; height: 150px; border-radius: 50%; flex-shrink: 0;
@@ -226,6 +230,7 @@ h1 em, h2 em, .rodape__marca em, .marca__txt em { font-style: italic; font-weigh
   font-family: var(--serif); font-style: italic; font-size: clamp(3rem, 8vw, 5rem); color: rgba(251, 246, 240, .9);
   background: var(--tom, var(--barro-500)) var(--papel);
 }
+.ph__img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
 .ph::after {
   content: ""; position: absolute; width: 70%; aspect-ratio: 1; right: -20%; bottom: -30%;
   background: currentColor; opacity: .08; border-radius: 50%;
@@ -245,7 +250,8 @@ h1 em, h2 em, .rodape__marca em, .marca__txt em { font-style: italic; font-weigh
 .categoria--larga .categoria__foto { height: auto; width: 46%; }
 .categoria--larga .categoria__info { flex: 1; justify-content: center; }
 .categoria--grande .categoria__foto { height: auto; flex: 1; min-height: 260px; }
-.categoria__foto img { width: 100%; height: 100%; object-fit: cover; }
+.categoria__foto { position: relative; overflow: hidden; }
+.categoria__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 .categoria__info { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 4px; }
 .categoria__num { font-family: var(--serif); font-style: italic; color: var(--barro-400); font-size: .95rem; }
 .categoria h3 { font-size: 1.4rem; color: var(--barro-800); margin: 0; }
@@ -270,7 +276,7 @@ h1 em, h2 em, .rodape__marca em, .marca__txt em { font-style: italic; font-weigh
 
 /* ---------- Avaliações ---------- */
 .avaliacoes { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
-.nota__num { font-family: var(--serif); font-weight: 700; font-size: clamp(6rem, 16vw, 9.5rem); line-height: .85; color: var(--barro-800); margin: 18px 0 8px; letter-spacing: -.04em; }
+.nota__num { font-family: var(--serif); font-weight: 700; font-size: clamp(6rem, 16vw, 9.5rem); line-height: .85; color: var(--barro-800); margin: 0 0 8px; letter-spacing: -.04em; }
 .nota__txt { color: var(--tinta-suave); margin: 6px 0 22px; }
 .nota__botoes { display: flex; flex-wrap: wrap; gap: 10px; }
 .depoimentos { display: grid; gap: 16px; }
@@ -364,17 +370,18 @@ h1 em, h2 em, .rodape__marca em, .marca__txt em { font-style: italic; font-weigh
   .hero__arte { width: min(88%, 360px); }
   .selo-giro { width: 116px; right: -24px; }
   .secao { padding: 72px 0; }
-  .secao__topo { grid-template-columns: 1fr; gap: 6px; margin-bottom: 32px; }
+  .secao__topo { margin-bottom: 32px; }
   .semana { grid-template-columns: repeat(6, 132px); }
   .cartaz { grid-template-columns: 1fr; padding: 30px 24px; }
   .carimbo { width: 124px; height: 124px; justify-self: start; }
+  .cartaz__arte { width: 170px; justify-self: center; margin: 8px 0 12px 40px; }
   .carimbo strong { font-size: 2.4rem; }
   .ofertas__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .produto__info { padding: 12px 14px 14px; }
   .produto__nome { font-size: 1.08rem; }
-  .bento { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 12px; }
   .categoria--grande, .categoria--larga { grid-column: span 2; grid-row: auto; }
-  .categoria--grande .categoria__foto { min-height: 200px; }
+  .categoria--grande .categoria__foto { min-height: 0; height: 240px; flex: none; }
   .categoria__foto { height: 130px; }
   .categoria--larga { flex-direction: column; }
   .categoria--larga .categoria__foto { width: auto; height: 150px; }

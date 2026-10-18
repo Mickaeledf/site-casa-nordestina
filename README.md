@@ -116,7 +116,7 @@ Conceito **"armazém do sertão"**: tons de barro e couro, tipografia serifada e
 
 **Fontes (Google Fonts):** *Fraunces* (títulos, com palavras em itálico) e *Manrope* (textos).
 
-**Elementos:** arco de casa de taipa no topo, selo giratório "Tudo do País", faixa de produtos correndo, seções numeradas (01–05), carimbo de desconto nas ofertas e placeholders de foto em tons de barro com a inicial do produto.
+**Elementos:** arco de casa de taipa no topo, selo giratório "Tudo do País", faixa de produtos correndo, carimbo de desconto nas ofertas e placeholders de foto em tons de barro com a inicial do produto.
 
 > Ao alterar CSS ou JS, aumente o número `?v=` nos links do `index.html` para o navegador não mostrar a versão antiga em cache.
 
@@ -129,9 +129,9 @@ Conceito **"armazém do sertão"**: tons de barro e couro, tipografia serifada e
 
 ## Pendências
 
-- [ ] Fotos reais (logo, fachada, categorias, Instagram, produtos)
+- [x] Fotos de fachada, categorias, artes das ofertas e grade do Instagram (tiradas do Instagram da loja)
+- [ ] Fotos próprias dos produtos das ofertas (hoje aparecem blocos com a inicial) e logo em `img/logo.png`
 - [ ] Tema de **quinta-feira**
-- [ ] Confirmar se os descontos de 15% (segunda, terça e sexta) continuam valendo
 - [ ] Preços reais em `ofertas.js`
 - [ ] 3 depoimentos reais do Google
 - [ ] Colocar o link do site no Perfil da Empresa no Google
