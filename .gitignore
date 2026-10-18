@@ -15,3 +15,7 @@ desktop.ini
 
 # Dependências (caso algum dia sejam usadas)
 node_modules/
+
+# Arquivos internos do projeto (não publicar)
+prompt-site-casa-nordestina.md
+.claude/
