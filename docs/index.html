@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Casa Nordestina Paranoá | Empório de Produtos Nordestinos em Brasília</title>
-  <meta name="description" content="Empório no Paranoá, Brasília-DF: castanhas, temperos, doces a granel, queijos, produtos nordestinos e linha saudável. Compre na loja, retire ou peça delivery pelo WhatsApp.">
+  <meta name="description" content="Empório no Paranoá, Brasília-DF: castanhas, temperos, doces a granel, queijos, polpas, produtos nordestinos e linha saudável. Compre na loja, retire ou peça delivery pelo WhatsApp.">
   <link rel="canonical" href="https://mickaeledf.github.io/site-casa-nordestina/">
-  <meta name="theme-color" content="#1E5B32">
+  <meta name="theme-color" content="#5b231c">
   <link rel="icon" href="img/logo.png">
 
   <!-- Compartilhamento (WhatsApp, Facebook, X) -->
@@ -20,8 +20,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Kaushan+Script&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,50;1,9..144,400..800,50&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
 
   <!-- Dados estruturados para o Google (SEO local) -->
   <script type="application/ld+json">
@@ -56,21 +56,22 @@
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- ========== CABEÇALHO ========== -->
-  <header class="header">
+  <header class="header" id="topo">
     <div class="container header__inner">
-      <a href="#inicio" class="logo" aria-label="Casa Nordestina Paranoá — início">
-        <img src="img/logo.png" alt="Casa Nordestina" class="logo__img" onerror="this.remove()">
-        <span class="logo__txt"><svg class="logo__flag" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="3" fill="#0E8A3A"/><path d="M14 2.5 25.5 10 14 17.5 2.5 10Z" fill="#FFB800"/><circle cx="14" cy="10" r="4.3" fill="#1B3C8C"/></svg>CASA<br>NORDESTINA</span>
+      <a href="#inicio" class="marca" aria-label="Casa Nordestina Paranoá — início">
+        <img src="img/logo.png" alt="" class="marca__img" onerror="this.remove()">
+        <svg class="marca__sol" aria-hidden="true"><use href="#i-sol"/></svg>
+        <span class="marca__txt">Casa<br><em>Nordestina</em></span>
       </a>
       <nav class="nav" id="menu" aria-label="Menu principal">
+        <a href="#ofertas">Ofertas</a>
         <a href="#produtos">Produtos</a>
-        <a href="#ofertas">Ofertas da Semana</a>
-        <a href="#como-chegar">Como Chegar</a>
+        <a href="#pedir">Como pedir</a>
         <a href="#avaliacoes">Avaliações</a>
-        <a href="#contato">Contato</a>
+        <a href="#visite">Visite</a>
       </nav>
-      <a class="btn btn--wa btn--sm header__cta js-wa" href="#" target="_blank" rel="noopener">
-        <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir no WhatsApp</span>
+      <a class="btn btn--barro btn--sm header__cta js-wa" href="#" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Fazer pedido</span>
       </a>
       <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
         <span></span><span></span><span></span>
@@ -81,136 +82,161 @@
   <main id="conteudo">
     <!-- ========== HERO ========== -->
     <section class="hero" id="inicio">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <svg class="hero__folha hero__folha--1" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 98C20 70 8 40 22 14 40 4 70 10 84 30c12 22 2 52-34 68Zm0 0C48 64 52 36 64 16" /><path d="M50 98C48 64 52 36 64 16M52 70 30 52M54 52 74 40M56 36 40 26" stroke="rgba(0,0,0,.25)" stroke-width="2" fill="none"/></svg>
-      <svg class="hero__folha hero__folha--2" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 98C20 70 8 40 22 14 40 4 70 10 84 30c12 22 2 52-34 68Zm0 0C48 64 52 36 64 16" /><path d="M50 98C48 64 52 36 64 16M52 70 30 52M54 52 74 40M56 36 40 26" stroke="rgba(0,0,0,.25)" stroke-width="2" fill="none"/></svg>
-      <div class="container hero__content">
-        <p class="status" id="status" role="status">Verificando horário…</p>
-        <h1><span class="script">Tudo do Nordeste</span>e do <span class="destaque">Brasil</span> no coração do Paranoá</h1>
-        <p class="hero__sub">Castanhas, temperos, doces a granel, queijos, produtos naturais e muito mais.</p>
-        <div class="hero__ctas">
-          <a class="btn btn--wa btn--lg js-wa" href="#" target="_blank" rel="noopener">
-            <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pelo WhatsApp
-          </a>
-          <a class="btn btn--light btn--lg js-maps" href="#" target="_blank" rel="noopener">
-            <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Como chegar
-          </a>
+      <div class="container hero__grid">
+        <div class="hero__texto">
+          <p class="status" id="status" role="status">Verificando horário…</p>
+          <p class="kicker">Empório nordestino · Paranoá — DF</p>
+          <h1>Do sertão <em>pro</em> Paranoá.</h1>
+          <p class="hero__lead">Castanhas, temperos, doces a granel, queijo coalho, polpas e tudo que tem gosto de casa — escolhido a dedo, vendido com prosa boa.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--barro btn--lg js-wa" href="#" target="_blank" rel="noopener">
+              <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pelo WhatsApp
+            </a>
+            <a class="btn btn--linha btn--lg js-maps" href="#" target="_blank" rel="noopener">
+              <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Como chegar
+            </a>
+          </div>
+          <ul class="hero__meta">
+            <li><a href="#avaliacoes"><strong>4,5</strong> <span class="estrelas" aria-hidden="true">★★★★★</span><span class="sr">estrelas</span> · 1.595 avaliações no Google</a></li>
+            <li>Loja · Retirada · Delivery</li>
+          </ul>
         </div>
-        <a class="rating" href="#avaliacoes">
-          <span class="rating__stars" aria-hidden="true">★★★★<span class="half">★</span></span>
-          <strong>4,5 no Google</strong> <span class="nowrap">· +1.595 avaliações</span>
-        </a>
+
+        <div class="hero__arte" aria-hidden="true">
+          <div class="arco">
+            <div class="arco__foto"></div>
+            <svg class="arco__sol"><use href="#i-sol"/></svg>
+            <svg class="arco__cacto"><use href="#i-mandacaru"/></svg>
+          </div>
+          <svg class="selo-giro" viewBox="0 0 200 200">
+            <defs><path id="circulo" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+            <circle cx="100" cy="100" r="96" class="selo-giro__fundo"/>
+            <text><textPath href="#circulo" startOffset="0">TUDO DO PAÍS ✺ CASA NORDESTINA ✺ PARANOÁ ✺ </textPath></text>
+            <use href="#i-sol" x="70" y="70" width="60" height="60" class="selo-giro__sol"/>
+          </svg>
+        </div>
       </div>
     </section>
 
-    <!-- ========== SERVIÇOS ========== -->
-    <section class="servicos" aria-label="Formas de comprar">
-      <div class="container servicos__grid">
-        <div class="servico"><span class="servico__ico" aria-hidden="true">🛒</span><div><strong>Compra na loja</strong><small>Venha conhecer de perto</small></div></div>
-        <div class="servico"><span class="servico__ico" aria-hidden="true">🛍️</span><div><strong>Retirada na loja</strong><small>Peça e só passe para pegar</small></div></div>
-        <div class="servico"><span class="servico__ico" aria-hidden="true">🛵</span><div><strong>Delivery</strong><small>Peça pelo WhatsApp</small></div></div>
+    <!-- Faixa de produtos correndo -->
+    <div class="faixa" aria-hidden="true">
+      <div class="faixa__trilho">
+        <span>Castanha de caju</span><i>✺</i><span>Rapadura</span><i>✺</i><span>Queijo coalho</span><i>✺</i><span>Colorau</span><i>✺</i><span>Manteiga de garrafa</span><i>✺</i><span>Polpa de cajá</span><i>✺</i><span>Cocada</span><i>✺</i><span>Farinha d'água</span><i>✺</i><span>Doce de leite</span><i>✺</i><span>Castanha-do-pará</span><i>✺</i>
+        <span>Castanha de caju</span><i>✺</i><span>Rapadura</span><i>✺</i><span>Queijo coalho</span><i>✺</i><span>Colorau</span><i>✺</i><span>Manteiga de garrafa</span><i>✺</i><span>Polpa de cajá</span><i>✺</i><span>Cocada</span><i>✺</i><span>Farinha d'água</span><i>✺</i><span>Doce de leite</span><i>✺</i><span>Castanha-do-pará</span><i>✺</i>
       </div>
-    </section>
+    </div>
 
     <!-- ========== OFERTAS DA SEMANA ========== -->
-    <section class="secao secao--kraft" id="ofertas">
+    <section class="secao" id="ofertas">
       <div class="container">
-        <p class="faixa">Ofertas da Semana</p>
-        <h2>Cada dia, um tema</h2>
-        <p class="secao__intro">Toque no dia para ver as ofertas. O de hoje já vem marcado.</p>
-        <div class="dias" role="tablist" aria-label="Dias da semana" id="dias"></div>
-        <div class="ofertas" id="ofertas-lista" role="tabpanel" aria-live="polite"></div>
+        <header class="secao__topo">
+          <span class="secao__num">01</span>
+          <div>
+            <h2>Cada dia, <em>um tema.</em></h2>
+            <p>Toda semana a casa escolhe um cantinho da prateleira pra ficar mais barato. O dia de hoje já vem marcado.</p>
+          </div>
+        </header>
+        <div class="semana" role="tablist" aria-label="Dias da semana" id="dias"></div>
+        <div id="ofertas-lista" role="tabpanel" aria-live="polite"></div>
       </div>
     </section>
 
     <!-- ========== PRODUTOS ========== -->
-    <section class="secao" id="produtos">
+    <section class="secao secao--areia" id="produtos">
       <div class="container">
-        <p class="faixa">Nossos Produtos</p>
-        <h2>De tudo um pouco, do jeito que você gosta</h2>
-        <div class="categorias" id="categorias"></div>
+        <header class="secao__topo">
+          <span class="secao__num">02</span>
+          <div>
+            <h2>O que tem <em>na casa.</em></h2>
+            <p>De castanha a granel a queijo coalho, de tempero baiano a polpa de cajá. Não achou? Pergunta que a gente procura.</p>
+          </div>
+        </header>
+        <div class="bento" id="categorias"></div>
       </div>
     </section>
 
     <!-- ========== COMO PEDIR ========== -->
-    <section class="secao secao--verde">
+    <section class="secao secao--barro" id="pedir">
+      <svg class="pedir__sol" aria-hidden="true"><use href="#i-sol"/></svg>
       <div class="container">
-        <p class="faixa faixa--mostarda">Como pedir</p>
-        <h2>Simples assim, em 3 passos</h2>
+        <header class="secao__topo secao__topo--claro">
+          <span class="secao__num">03</span>
+          <div>
+            <h2>Pediu, <em>chegou.</em></h2>
+            <p>Sem cadastro, sem aplicativo. É só chamar no WhatsApp.</p>
+          </div>
+        </header>
         <ol class="passos">
-          <li><span class="passo__n">1</span><strong>Escolha os produtos</strong><p>Veja as ofertas do dia e nossas categorias.</p></li>
-          <li><span class="passo__n">2</span><strong>Chame no WhatsApp</strong><p>Mande sua lista que a gente separa tudo.</p></li>
-          <li><span class="passo__n">3</span><strong>Retire ou receba</strong><p>Busque na loja ou receba em casa.</p></li>
+          <li><span class="passos__n">1</span><h3>Escolha</h3><p>Veja as ofertas do dia e o que tem na casa.</p></li>
+          <li><span class="passos__n">2</span><h3>Chame no WhatsApp</h3><p>Mande sua lista que a gente separa tudo pra você.</p></li>
+          <li><span class="passos__n">3</span><h3>Retire ou receba</h3><p>Passe na loja pra buscar ou receba em casa.</p></li>
         </ol>
-        <div class="centro">
-          <a class="btn btn--laranja btn--lg js-wa" href="#" target="_blank" rel="noopener">
-            <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Fazer meu pedido
-          </a>
-        </div>
+        <a class="btn btn--areia btn--lg js-wa" href="#" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Fazer meu pedido
+        </a>
       </div>
     </section>
 
     <!-- ========== AVALIAÇÕES ========== -->
-    <section class="secao secao--kraft" id="avaliacoes">
-      <div class="container">
-        <p class="faixa">Avaliações</p>
-        <h2>Quem compra, recomenda</h2>
+    <section class="secao" id="avaliacoes">
+      <div class="container avaliacoes">
         <div class="nota">
-          <span class="nota__num">4,5</span>
-          <div>
-            <span class="rating__stars rating__stars--lg" aria-label="4,5 de 5 estrelas">★★★★<span class="half">★</span></span>
-            <p>+1.595 avaliações no Google</p>
+          <span class="secao__num">04</span>
+          <p class="nota__num">4,5</p>
+          <p class="estrelas estrelas--lg" aria-label="4,5 de 5 estrelas">★★★★★</p>
+          <p class="nota__txt">média de <strong>1.595 avaliações</strong> no Google</p>
+          <div class="nota__botoes">
+            <a class="btn btn--barro btn--sm js-maps" href="#" target="_blank" rel="noopener">Ver no Google</a>
+            <a class="btn btn--linha btn--sm js-maps" href="#" target="_blank" rel="noopener">Deixar avaliação</a>
           </div>
         </div>
         <!-- TROQUE pelos depoimentos reais do Google -->
         <div class="depoimentos">
-          <blockquote class="depo"><p>“Escreva aqui uma avaliação real de um cliente no Google.”</p><footer>— Nome do cliente</footer></blockquote>
-          <blockquote class="depo"><p>“Escreva aqui uma avaliação real de um cliente no Google.”</p><footer>— Nome do cliente</footer></blockquote>
-          <blockquote class="depo"><p>“Escreva aqui uma avaliação real de um cliente no Google.”</p><footer>— Nome do cliente</footer></blockquote>
-        </div>
-        <div class="botoes">
-          <a class="btn btn--verde js-maps" href="#" target="_blank" rel="noopener">Ver todas no Google</a>
-          <a class="btn btn--outline js-maps" href="#" target="_blank" rel="noopener">Avaliar a loja</a>
+          <blockquote class="depo"><p>“Escreva aqui uma avaliação real de um cliente no Google.”</p><footer>Nome do cliente</footer></blockquote>
+          <blockquote class="depo"><p>“Escreva aqui uma avaliação real de um cliente no Google.”</p><footer>Nome do cliente</footer></blockquote>
+          <blockquote class="depo"><p>“Escreva aqui uma avaliação real de um cliente no Google.”</p><footer>Nome do cliente</footer></blockquote>
         </div>
       </div>
     </section>
 
-    <!-- ========== INSTAGRAM ========== -->
-    <section class="secao" id="instagram">
+    <!-- ========== VISITE ========== -->
+    <section class="secao secao--areia" id="visite">
       <div class="container">
-        <p class="faixa">Siga a gente</p>
-        <h2>Novidades todo dia no Instagram</h2>
-        <div class="insta" id="insta"></div>
-        <div class="centro">
-          <a class="btn btn--insta js-insta" href="#" target="_blank" rel="noopener">
-            <svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg>@casanordestinaparanoa
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== COMO CHEGAR / CONTATO ========== -->
-    <section class="secao secao--kraft" id="como-chegar">
-      <div class="container chegar">
-        <div class="chegar__info" id="contato">
-          <p class="faixa">Como chegar</p>
-          <h2>Venha nos visitar</h2>
-          <p class="endereco"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span id="endereco">Avenida Paranoá, Quadra 27, Conjunto 19, Lote 1 — Paranoá, Brasília - DF, 71572-707</span></p>
-          <button class="link-btn" id="copiar" type="button">📋 Copiar endereço</button>
-
-          <div class="acoes">
-            <a class="btn btn--verde js-maps" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Google Maps</a>
-            <a class="btn btn--outline js-waze" href="#" target="_blank" rel="noopener">🚗 Waze</a>
-            <a class="btn btn--outline js-tel" href="#"><svg class="ico" aria-hidden="true"><use href="#i-tel"/></svg>Ligar</a>
-            <a class="btn btn--wa js-wa" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <header class="secao__topo">
+          <span class="secao__num">05</span>
+          <div>
+            <h2>Passa aqui <em>na Casa.</em></h2>
+            <p>Na Avenida Paranoá, pertinho de tudo. Cafezinho e prosa por nossa conta.</p>
           </div>
+        </header>
+        <div class="visite">
+          <div class="cartao">
+            <p class="cartao__rotulo">Endereço</p>
+            <p class="endereco" id="endereco">Avenida Paranoá, Quadra 27, Conjunto 19, Lote 1<br>Paranoá, Brasília - DF · 71572-707</p>
+            <button class="link-btn" id="copiar" type="button">Copiar endereço</button>
 
-          <h3>Horário de funcionamento</h3>
-          <table class="horarios" id="horarios"><tbody></tbody></table>
+            <div class="acoes">
+              <a class="btn btn--barro js-maps" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Google Maps</a>
+              <a class="btn btn--linha js-waze" href="#" target="_blank" rel="noopener">Waze</a>
+              <a class="btn btn--linha js-tel" href="#"><svg class="ico" aria-hidden="true"><use href="#i-tel"/></svg>Ligar</a>
+              <a class="btn btn--linha js-wa" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+            </div>
+
+            <p class="cartao__rotulo">Horários</p>
+            <ul class="horarios" id="horarios"></ul>
+          </div>
+          <div class="mapa">
+            <iframe title="Mapa da Casa Nordestina Paranoá" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Casa%20Nordestina%20Parano%C3%A1%2C%20Bras%C3%ADlia&z=16&output=embed"></iframe>
+          </div>
         </div>
-        <div class="mapa">
-          <iframe title="Mapa da Casa Nordestina Paranoá" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://maps.google.com/maps?q=Casa%20Nordestina%20Parano%C3%A1%2C%20Bras%C3%ADlia&z=16&output=embed"></iframe>
+
+        <div class="insta">
+          <div class="insta__topo">
+            <p>Novidade todo dia no Instagram</p>
+            <a class="link-seta js-insta" href="#" target="_blank" rel="noopener">@casanordestinaparanoa →</a>
+          </div>
+          <div class="insta__grade" id="insta"></div>
         </div>
       </div>
     </section>
@@ -218,51 +244,60 @@
 
   <!-- ========== RODAPÉ ========== -->
   <footer class="rodape">
-    <div class="container rodape__grid">
-      <div>
-        <span class="logo__txt logo__txt--claro"><svg class="logo__flag" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="3" fill="#0E8A3A"/><path d="M14 2.5 25.5 10 14 17.5 2.5 10Z" fill="#FFB800"/><circle cx="14" cy="10" r="4.3" fill="#1B3C8C"/></svg>CASA<br>NORDESTINA</span>
-        <p class="script">Tudo do País!</p>
+    <div class="container">
+      <p class="rodape__marca">Casa <em>Nordestina</em></p>
+      <div class="rodape__grid">
+        <div>
+          <h4>Endereço</h4>
+          <p>Av. Paranoá, Qd. 27, Conj. 19, Lote 1<br>Paranoá, Brasília - DF<br>71572-707</p>
+        </div>
+        <div>
+          <h4>Horários</h4>
+          <p>Segunda a sábado: 08h às 19h<br>Domingo: 08h às 13h</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p><a class="js-tel" href="#">(61) 3369-3355</a><br><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp (61) 99561-2964</a><br><a class="js-insta" href="#" target="_blank" rel="noopener">Instagram</a></p>
+        </div>
       </div>
-      <div>
-        <h4>Endereço</h4>
-        <p>Av. Paranoá, Qd. 27, Conj. 19, Lote 1<br>Paranoá, Brasília - DF<br>71572-707</p>
-      </div>
-      <div>
-        <h4>Horários</h4>
-        <p>Seg. a sáb.: 08h às 19h<br>Domingo: 08h às 13h</p>
-      </div>
-      <div>
-        <h4>Contato</h4>
-        <p><a class="js-tel" href="#">(61) 3369-3355</a><br><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp (61) 99561-2964</a><br><a class="js-insta" href="#" target="_blank" rel="noopener">Instagram</a></p>
-      </div>
+      <p class="rodape__copy">© <span id="ano"></span> Casa Nordestina Paranoá · Tudo do País</p>
     </div>
-    <p class="rodape__copy">© <span id="ano"></span> Casa Nordestina Paranoá</p>
   </footer>
 
-  <!-- WhatsApp flutuante (desktop) -->
+  <!-- WhatsApp flutuante (computador) -->
   <a class="wa-float js-wa" href="#" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
     <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>
   </a>
 
   <!-- Barra de ações fixa (celular) -->
   <nav class="barra" aria-label="Ações rápidas">
-    <a class="barra__wa js-wa" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+    <a class="barra__wa js-wa" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir</a>
     <a class="js-tel" href="#"><svg class="ico" aria-hidden="true"><use href="#i-tel"/></svg>Ligar</a>
     <a class="js-maps" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Rota</a>
   </nav>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Ícones -->
+  <!-- Ícones e ilustrações (estilo xilogravura) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-sol" viewBox="0 0 100 100">
+      <g fill="currentColor">
+        <circle cx="50" cy="50" r="17"/>
+        <path d="M50 2l5 22h-10zM50 98l-5-22h10zM2 50l22-5v10zM98 50l-22 5V45zM16 16l19 12-7 7zM84 84L65 72l7-7zM84 16L72 35l-7-7zM16 84l12-19 7 7z"/>
+        <path d="M31 6l9 18-7 3zM69 94l-9-18 7-3zM6 69l18-9 3 7zM94 31l-18 9-3-7zM69 6l-2 20-7-3zM31 94l2-20 7 3zM6 31l20 2-3 7zM94 69l-20-2 3-7z" opacity=".55"/>
+      </g>
+    </symbol>
+    <symbol id="i-mandacaru" viewBox="0 0 120 200">
+      <path fill="currentColor" d="M50 200V40c0-12 20-12 20 0v160zM50 120H32c-10 0-16-6-16-16V64c0-10 16-10 16 0v36h18zM70 96h18V52c0-10 16-10 16 0v44c0 10-6 16-16 16H70z"/>
+      <path d="M60 46v150M24 70v30M96 58v40" stroke="rgba(0,0,0,.25)" stroke-width="2" fill="none" stroke-dasharray="4 6"/>
+    </symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></symbol>
     <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></symbol>
-    <symbol id="i-insta" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4ZM12 2c-2.7 0-3 0-4.1.1C3.6 2.3 2.3 3.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.2 4.2 1.6 5.6 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c4.2-.2 5.6-1.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.2-4.2-1.6-5.6-5.8-5.8C15 2 14.7 2 12 2Zm0 1.8c2.7 0 3 0 4 .1 3.1.1 4 1.1 4.1 4.1.1 1 .1 1.3.1 4s0 3-.1 4c-.1 3-1 4-4.1 4.1-1 .1-1.3.1-4 .1s-3 0-4-.1c-3.1-.1-4-1.1-4.1-4.1-.1-1-.1-1.3-.1-4s0-3 .1-4C4 4.9 4.9 4 8 3.9c1-.1 1.3-.1 4-.1Z"/></symbol>
   </svg>
 
-  <script src="js/config.js"></script>
-  <script src="js/ofertas.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/config.js?v=2"></script>
+  <script src="js/ofertas.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>

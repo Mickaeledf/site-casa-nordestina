@@ -103,19 +103,22 @@ Para usar algo como `casanordestinaparanoa.com.br`: registre o domínio (ex.: Re
 
 ## Identidade visual
 
-Tirada das artes de campanha do Instagram (estilo empório rústico/artesanal).
+Conceito **"armazém do sertão"**: tons de barro e couro, tipografia serifada editorial e motivos de xilogravura (sol do sertão e mandacaru).
 
-| Uso                                   | Cor        |
-|---------------------------------------|------------|
-| Verde dos títulos                     | `#1E5B32`  |
-| Verde profundo (rodapé)               | `#143D22`  |
-| Verde do logo / WhatsApp              | `#138A3E`  |
-| Laranja terracota (faixas, CTA)       | `#D2601A`  |
-| Amarelo-mostarda (selos dos dias)     | `#F2B705`  |
-| Etiqueta de preço neon                | `#EEF23B`  |
-| Fundos creme / kraft                  | `#FAF4E6` / `#EFE3C8` |
+| Uso                                         | Cor        |
+|---------------------------------------------|------------|
+| Principal (botões, títulos, faixa)          | `#5b231c`  |
+| Variações de barro (cartazes, placeholders) | `#6d332b` · `#7f423a` · `#915249` |
+| Destaques em itálico                        | `#a36258`  |
+| Rodapé                                      | `#3e1712`  |
+| Fundos linho / areia                        | `#fbf6f0` / `#f4eadf` |
+| Detalhe pontual (status, selo "hoje")       | `#e3a33b`  |
 
-**Fontes (Google Fonts):** *Anton* (títulos em caixa alta), *Kaushan Script* (nome do dia, em cursiva de pincel), *Nunito* (textos).
+**Fontes (Google Fonts):** *Fraunces* (títulos, com palavras em itálico) e *Manrope* (textos).
+
+**Elementos:** arco de casa de taipa no topo, selo giratório "Tudo do País", faixa de produtos correndo, seções numeradas (01–05), carimbo de desconto nas ofertas e placeholders de foto em tons de barro com a inicial do produto.
+
+> Ao alterar CSS ou JS, aumente o número `?v=` nos links do `index.html` para o navegador não mostrar a versão antiga em cache.
 
 ## SEO local
 

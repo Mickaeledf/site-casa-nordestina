@@ -6,6 +6,8 @@
   const C = window.CONFIG;
   const OFERTAS = window.OFERTAS || {};
   const DIAS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+  const ABREV = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+  const TONS = ["#7f423a", "#915249", "#6d332b", "#a36258", "#5b231c"]; // fundos dos placeholders
 
   /* ---------- Links (WhatsApp, telefone, mapas, Instagram) ---------- */
   const linkWa = (msg) =>
@@ -21,19 +23,21 @@
   setLinks(".js-waze", linkWaze);
   setLinks(".js-insta", C.instagram);
 
-  /* ---------- Imagem com "placeholder" se a foto ainda não existir ---------- */
-  function foto(arquivo, alt, emoji) {
-    const wrap = document.createElement("div");
-    wrap.className = "ph";
-    wrap.textContent = emoji || "🧺";
-    if (!arquivo) return wrap;
+  /* ---------- Foto com placeholder (bloco de barro + inicial) enquanto não houver imagem ---------- */
+  function foto(arquivo, alt, indice) {
+    const ph = document.createElement("div");
+    ph.className = "ph";
+    ph.style.setProperty("--tom", TONS[(indice || 0) % TONS.length]);
+    ph.textContent = (alt || "").trim().charAt(0);
+    ph.setAttribute("aria-hidden", "true");
+    if (!arquivo) return ph;
     const img = new Image();
     img.src = "img/" + arquivo;
     img.alt = alt;
     img.loading = "lazy";
     img.decoding = "async";
-    img.onload = () => wrap.replaceWith(img);
-    return wrap;
+    img.onload = () => ph.replaceWith(img);
+    return ph;
   }
 
   /* ---------- Hora atual em Brasília ---------- */
@@ -59,7 +63,7 @@
       el.className = "status status--aberto";
       el.textContent = falta <= 60
         ? "Aberto agora · fecha em " + falta + " min"
-        : "Aberto agora · fecha às " + fmtHora(hoje.fecha);
+        : "Aberto agora · até às " + fmtHora(hoje.fecha);
       return;
     }
 
@@ -78,18 +82,18 @@
     el.textContent = texto;
   }
 
-  /* ---------- Tabela de horários (dia de hoje destacado) ---------- */
+  /* ---------- Lista de horários (dia de hoje destacado) ---------- */
   function montarHorarios() {
-    const tbody = document.querySelector("#horarios tbody");
+    const ul = document.getElementById("horarios");
     const { dia } = agoraBrasilia();
     [1, 2, 3, 4, 5, 6, 0].forEach((d) => {
       const h = C.horarios[d];
-      const tr = document.createElement("tr");
-      if (d === dia) tr.className = "hoje";
-      tr.innerHTML =
-        "<td>" + DIAS[d] + (d === dia ? " (hoje)" : "") + "</td>" +
-        "<td>" + (h ? fmtHora(h.abre) + " às " + fmtHora(h.fecha) : "Fechado") + "</td>";
-      tbody.appendChild(tr);
+      const li = document.createElement("li");
+      if (d === dia) li.className = "hoje";
+      li.innerHTML =
+        '<span class="h__dia">' + DIAS[d] + "</span>" +
+        '<span class="h__hora">' + (h ? fmtHora(h.abre) + " – " + fmtHora(h.fecha) : "Fechado") + "</span>";
+      ul.appendChild(li);
     });
   }
 
@@ -108,9 +112,10 @@
       b.className = "dia";
       b.setAttribute("role", "tab");
       b.setAttribute("aria-selected", "false");
+      b.setAttribute("aria-label", DIAS[d] + ": " + o.tema);
       b.innerHTML =
-        '<span class="dia__selo"><span><span class="emoji" aria-hidden="true">' + o.emoji + "</span>" + o.tema + "</span></span>" +
-        '<span class="dia__nome">' + DIAS[d] + "</span>" +
+        '<span class="dia__abrev">' + ABREV[d] + "</span>" +
+        '<span class="dia__tema">' + o.tema + "</span>" +
         (d === hoje ? '<span class="dia__hoje">HOJE</span>' : "");
       b.addEventListener("click", () => mostrar(d));
       diasEl.appendChild(b);
@@ -122,18 +127,18 @@
       const o = OFERTAS[d];
       lista.innerHTML = "";
 
-      // Cartaz do dia, no estilo das artes do Instagram
+      // Cartaz do dia
       const cartaz = document.createElement("div");
       cartaz.className = "cartaz cartaz--" + (o.cor || "creme");
       cartaz.innerHTML =
-        '<svg class="cartaz__folha" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 98C20 70 8 40 22 14 40 4 70 10 84 30c12 22 2 52-34 68Z"/></svg>' +
+        '<svg class="cartaz__sol" aria-hidden="true"><use href="#i-sol"/></svg>' +
         "<div>" +
-          '<span class="cartaz__dia">' + DIAS[d] + (d === hoje ? " <small>HOJE</small>" : "") + "</span>" +
-          '<h3 class="cartaz__tema">' + o.titulo + "</h3>" +
+          '<span class="cartaz__dia">' + (d === hoje ? "Oferta de hoje" : "Oferta de " + DIAS[d].toLowerCase()) + "</span>" +
+          '<h3 class="cartaz__tema">' + DIAS[d] + " " + o.titulo + "</h3>" +
           (o.chamada ? '<p class="cartaz__chamada">' + o.chamada + "</p>" : "") +
         "</div>" +
         (o.desconto
-          ? '<div class="cartaz__desc"><strong>' + o.desconto + "</strong><span>de desconto</span></div>"
+          ? '<div class="carimbo"><div><strong>' + o.desconto + "</strong><span>de desconto</span></div></div>"
           : "");
       lista.appendChild(cartaz);
 
@@ -146,18 +151,18 @@
 
       const grid = document.createElement("div");
       grid.className = "ofertas__grid";
-      o.produtos.forEach((p) => {
+      o.produtos.forEach((p, i) => {
         const card = document.createElement("article");
         card.className = "produto";
         const f = document.createElement("div");
         f.className = "produto__foto";
-        f.appendChild(foto(p.foto, p.nome, o.emoji));
+        f.appendChild(foto(p.foto, p.nome, i + d));
         if (o.desconto) f.insertAdjacentHTML("beforeend", '<span class="produto__selo">-' + o.desconto + "</span>");
         card.appendChild(f);
 
         const preco = p.preco
-          ? '<span class="etiqueta"><small>R$</small> ' + p.preco + (p.unidade ? " <small>/" + p.unidade + "</small>" : "") + "</span>"
-          : '<span class="etiqueta etiqueta--consulte">Consulte o preço</span>';
+          ? '<span class="etiqueta">R$ ' + p.preco + (p.unidade ? " <small>/ " + p.unidade + "</small>" : "") + "</span>"
+          : '<span class="etiqueta etiqueta--consulte">Preço no WhatsApp</span>';
         const info = document.createElement("div");
         info.className = "produto__info";
         info.innerHTML =
@@ -174,39 +179,39 @@
     // Abre no dia de hoje (domingo → mostra segunda)
     const inicial = OFERTAS[hoje] ? hoje : ordem[0];
     mostrar(inicial);
-    if (botoes[inicial]) {
-      diasEl.scrollLeft = botoes[inicial].offsetLeft - 16;
-    }
+    if (botoes[inicial]) diasEl.scrollLeft = botoes[inicial].offsetLeft - 16;
   }
 
-  /* ---------- Categorias de produtos ---------- */
+  /* ---------- Categorias de produtos (grade "bento") ----------
+     tamanho: "grande" (2x2), "larga" (2x1) ou "" (1x1) */
   const CATEGORIAS = [
-    { nome: "Castanhas e frutas secas", desc: "Caju, pará, nozes, damasco, uva-passa e mais.", foto: "castanhas.jpg", emoji: "🥜" },
-    { nome: "Temperos e especiarias", desc: "Colorau, cominho, pimentas e temperos prontos.", foto: "temperos.jpg", emoji: "🌶️" },
-    { nome: "Doces a granel", desc: "Cocada, rapadura, doce de leite e goiabada.", foto: "doces.jpg", emoji: "🍬" },
-    { nome: "Queijos e laticínios", desc: "Queijo coalho, manteiga de garrafa, leite.", foto: "queijos.jpg", emoji: "🧀" },
-    { nome: "Produtos regionais nordestinos", desc: "O sabor do Nordeste pertinho de você.", foto: "regionais.jpg", emoji: "🌵" },
-    { nome: "Polpas de frutas", desc: "Abacaxi, cajá, acerola, cupuaçu e frutas do Cerrado.", foto: "polpas.jpg", emoji: "🍍" },
-    { nome: "Linha saudável e suplementos", desc: "Grãos, encapsulados, creatina e naturais.", foto: "saudavel.jpg", emoji: "💊" },
-    { nome: "Mercearia e frios", desc: "Tudo o que falta na sua despensa.", foto: "mercearia.jpg", emoji: "🛒" }
+    { nome: "Castanhas e frutas secas", desc: "Caju, pará, nozes, damasco, uva-passa — tudo a granel, no peso que você quiser.", foto: "castanhas.jpg", tamanho: "grande" },
+    { nome: "Temperos e especiarias", desc: "Colorau, cominho, pimentas e temperos prontos.", foto: "temperos.jpg", tamanho: "" },
+    { nome: "Doces a granel", desc: "Cocada, rapadura, doce de leite e goiabada.", foto: "doces.jpg", tamanho: "" },
+    { nome: "Queijos e laticínios", desc: "Queijo coalho, queijo minas, manteiga de garrafa e leite.", foto: "queijos.jpg", tamanho: "larga" },
+    { nome: "Produtos regionais", desc: "Farinha d'água, feijão-verde, carne de sol e o sabor do Nordeste.", foto: "regionais.jpg", tamanho: "" },
+    { nome: "Polpas de frutas", desc: "Abacaxi, cajá, acerola, cupuaçu e frutas do Cerrado.", foto: "polpas.jpg", tamanho: "" },
+    { nome: "Saudável e suplementos", desc: "Grãos, sementes, encapsulados e creatina.", foto: "saudavel.jpg", tamanho: "" },
+    { nome: "Mercearia e frios", desc: "Tudo o que falta na sua despensa.", foto: "mercearia.jpg", tamanho: "" }
   ];
 
   function montarCategorias() {
     const el = document.getElementById("categorias");
-    CATEGORIAS.forEach((c) => {
+    CATEGORIAS.forEach((c, i) => {
       const card = document.createElement("article");
-      card.className = "categoria";
+      card.className = "categoria revela" + (c.tamanho ? " categoria--" + c.tamanho : "");
       const f = document.createElement("div");
       f.className = "categoria__foto";
-      f.appendChild(foto(c.foto, c.nome, c.emoji));
+      f.appendChild(foto(c.foto, c.nome, i));
       card.appendChild(f);
       const info = document.createElement("div");
       info.className = "categoria__info";
       info.innerHTML =
+        '<span class="categoria__num">' + String(i + 1).padStart(2, "0") + "</span>" +
         "<h3>" + c.nome + "</h3><p>" + c.desc + "</p>" +
-        '<a class="btn btn--outline btn--sm" target="_blank" rel="noopener" href="' +
+        '<a class="link-seta" target="_blank" rel="noopener" href="' +
         linkWa("Olá! Vi no site e queria saber sobre *" + c.nome + "*.") +
-        '"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Perguntar no WhatsApp</a>';
+        '">Perguntar no WhatsApp →</a>';
       card.appendChild(info);
       el.appendChild(card);
     });
@@ -221,7 +226,9 @@
       a.target = "_blank";
       a.rel = "noopener";
       a.setAttribute("aria-label", "Ver post no Instagram");
-      a.appendChild(foto("insta-" + i + ".jpg", "Post do Instagram da Casa Nordestina", "📸"));
+      const ph = foto("insta-" + i + ".jpg", "Post do Instagram da Casa Nordestina", i);
+      if (ph.classList.contains("ph")) ph.textContent = "✺";
+      a.appendChild(ph);
       el.appendChild(a);
     }
   }
@@ -239,6 +246,25 @@
     document.addEventListener("keydown", (e) => e.key === "Escape" && fechar());
   }
 
+  /* ---------- Cabeçalho ganha borda ao rolar ---------- */
+  function cabecalho() {
+    const h = document.getElementById("topo");
+    const at = () => h.classList.toggle("rolou", window.scrollY > 8);
+    window.addEventListener("scroll", at, { passive: true });
+    at();
+  }
+
+  /* ---------- Animação de entrada ao rolar ---------- */
+  function revelar() {
+    document.querySelectorAll(".secao__topo, .cartao, .depo, .passos li").forEach((el) => el.classList.add("revela"));
+    const itens = document.querySelectorAll(".revela");
+    if (!("IntersectionObserver" in window)) { itens.forEach((el) => el.classList.add("visivel")); return; }
+    const obs = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visivel"); obs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    itens.forEach((el) => obs.observe(el));
+  }
+
   /* ---------- Copiar endereço ---------- */
   function toast(msg) {
     const t = document.getElementById("toast");
@@ -250,7 +276,7 @@
     document.getElementById("copiar").addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(C.endereco);
-        toast("Endereço copiado! ✅");
+        toast("Endereço copiado!");
       } catch {
         toast(C.endereco);
       }
@@ -265,6 +291,8 @@
   montarCategorias();
   montarInsta();
   menu();
+  cabecalho();
   copiar();
+  revelar();
   document.getElementById("ano").textContent = new Date().getFullYear();
 })();
